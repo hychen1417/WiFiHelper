@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WifiHelper</string>
+    <!-- 权限相关提示 -->
+    <string name="permission_push_message">你现在无法收到消息通知，将会错过许多重要的工作消息，请在手机通知管理中打开通知权限</string>
+    <string name="permission_camera_message">无法获取摄像头数据，请在手机应用权限中打开摄像头权限</string>
+    <string name="permission_record_message">请在手机应用权限中打开录音或通话录音权限</string>
+    <string name="permission_storage_message">请在手机应用权限中开启存储空间权限，以正常使用</string>
+    <string name="permission_calendar_message">请在手机应用权限中打开日历权限</string>
+    <string name="permission_location_message">无法准确获取位置信息，请在手机应用权限中打开位置信息读取权限</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.chenhuayu.wifihelper;
 
+import android.Manifest;
+import android.app.Dialog;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button getWifiState, getWifiLevel, getTxRate, getRxRate;
     private TextView wifiState, wifiLevel, txRate, rxRate;
     private NetSpeedTimer mNetSpeedTimer;
-
+    private Dialog permissionDialog;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        if (!SysPermissionUtils.checkPermissionGranted(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            permissionDialog = PermissionCheckHelper.showPermissionWaningDialog(this, R.string.permission_location_message);
+            permissionDialog.show();
+        }
     }
 
     private void initView() {
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         getWifiState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 wifiState.setText(getMyWifiInfo(MainActivity.this));
             }
         });
